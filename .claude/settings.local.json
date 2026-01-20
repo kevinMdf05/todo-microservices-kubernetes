@@ -8,7 +8,12 @@
       "Bash(./gradlew:*)",
       "Bash(timeout 30 ./gradlew bootRun:*)",
       "Bash(timeout 20 ./gradlew bootRun:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)",
+      "Bash(curl:*)"
     ]
   }
 }
