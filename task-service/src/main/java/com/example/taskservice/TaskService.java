@@ -1,6 +1,7 @@
 package com.example.taskservice;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +11,10 @@ import java.util.stream.Collectors;
 public class TaskService {
 
     private final List<Task> tasks = new ArrayList<>();
+    private final RestTemplate restTemplate;
 
-    public TaskService() {
+    public TaskService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
         tasks.add(new Task(1L, "Buy groceries", "Buy milk, bread and eggs", 1L, false));
         tasks.add(new Task(2L, "Finish report", "Complete the sales report for Q4", 2L, true));
         tasks.add(new Task(3L, "Plan trip", "Plan the summer vacation", 1L, false));
@@ -34,5 +37,17 @@ public class TaskService {
         return tasks.stream()
                 .filter(task -> task.getUserId().equals(userId))
                 .collect(Collectors.toList());
+    }
+
+    public TaskWithUserDto getTaskWithUserById(Long taskId) {
+        Task task = getTaskById(taskId);
+        if (task == null) {
+            return null;
+        }
+
+        String url = "http://localhost:8080/users/" + task.getUserId();
+        UserDto user = restTemplate.getForObject(url, UserDto.class);
+
+        return new TaskWithUserDto(task, user);
     }
 }

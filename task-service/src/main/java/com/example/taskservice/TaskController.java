@@ -42,4 +42,14 @@ public class TaskController {
     public List<Task> getTasksByUserId(@PathVariable Long userId) {
         return taskService.getTasksByUserId(userId);
     }
+
+    // GET /tasks/{id}/with-user -> tâche enrichie avec les infos de l'utilisateur
+    @GetMapping("/{id}/with-user")
+    public ResponseEntity<TaskWithUserDto> getTaskWithUser(@PathVariable Long id) {
+        TaskWithUserDto result = taskService.getTaskWithUserById(id);
+        if (result == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(result);
+    }
 }
