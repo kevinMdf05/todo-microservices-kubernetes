@@ -5,7 +5,7 @@
 - **Titre du projet** : Todo Microservices - Users & Tasks
 - **Travail** : individuel
 - **Etudiant** : Kevin Chaillot
-- **Date de rendu** : 22 janvier 2026
+- **Date de rendu** : 21 janvier 2026
 
 ## 2. Lien GitHub du projet
 
@@ -16,7 +16,6 @@ Le depot contient :
 - Dockerfiles + `docker-compose.yml`
 - Manifests Kubernetes dans `k8s/`
 - Scripts `start.sh` / `stop.sh`
-- Dossier `docs/` avec les captures d'ecran
 - README complet (architecture, Docker, Kubernetes, tests)
 
 ## 3. Description rapide du projet
@@ -48,7 +47,7 @@ Les services communiquent entre eux via HTTP (REST, JSON), aussi bien en Docker 
 
 ### Docker
 - 2 Dockerfiles (multi-stage build avec Gradle)
-- docker-compose.yml avec :
+- `docker-compose.yml` avec :
   - Reseau partage (`microservices-network`)
   - Health checks
   - Variables d'environnement pour la configuration
@@ -66,6 +65,7 @@ Les services communiquent entre eux via HTTP (REST, JSON), aussi bien en Docker 
 ## 6. Comment lancer
 
 ### Docker Compose
+
 ```bash
 # Build et demarrage
 docker-compose up -d
@@ -78,22 +78,23 @@ docker-compose down
 ```
 
 ### Kubernetes (Minikube)
+
 ```bash
 # Demarrer Minikube
 minikube start
 
-# Charger les images
+# Charger les images locales dans Minikube
 minikube image load todo-microservices-user-service:latest
 minikube image load todo-microservices-task-service:latest
 
-# Deployer
+# Deployer les microservices
 kubectl apply -f k8s/
 
-# Verifier
+# Verifier l'etat du cluster
 kubectl get pods
 kubectl get svc
 
-# Acceder au service
+# Acceder au service de task-service (NodePort)
 minikube service task-service --url
 ```
 
@@ -111,7 +112,7 @@ minikube service task-service --url
 
 ## 8. Captures d'ecran
 
-Les captures d'ecran sont disponibles dans le dossier `docs/` du depot GitHub et dans le README.
+Toutes les captures d'ecran (Docker, Kubernetes, endpoints REST, Git) se retrouvent dans le dossier d'explication du projet (document Google Docs exporte en PDF et depose sur Moodle).
 
 ---
 

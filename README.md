@@ -201,26 +201,6 @@ curl <URL>/tasks/1/with-user
 
 ---
 
-## Captures d'ecran
-
-### Docker Compose
-
-![Conteneurs Docker](docs/docker-containers.png)
-
-### Kubernetes
-
-![Pods Kubernetes](docs/k8s-pods.png)
-
-![Services Kubernetes](docs/k8s-svc.png)
-
-### Tests des endpoints
-
-![Liste des taches](docs/tasks-endpoint.png)
-
-![Tache avec utilisateur](docs/tasks-with-user.png)
-
----
-
 ## Donnees de test
 
 ### Utilisateurs (user-service)
@@ -274,7 +254,6 @@ todo-microservices/
 │   ├── user-service.yaml
 │   ├── task-deployment.yaml
 │   └── task-service.yaml
-├── docs/                   # Captures d'ecran
 ├── docker-compose.yml      # Configuration Docker Compose
 ├── start.sh               # Script de demarrage
 ├── stop.sh                # Script d'arret
