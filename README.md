@@ -1,4 +1,5 @@
-# Todo Microservices
+# Kevin CHAILLOT
+ # Todo Microservices
 
 Application microservices pour la gestion de tâches, construite avec Spring Boot, Docker et Kubernetes.
 
@@ -14,18 +15,18 @@ Application microservices pour la gestion de tâches, construite avec Spring Boo
 ┌─────────────────────────────────────────────────────────────┐
 │              Docker Network / Kubernetes Cluster            │
 │                                                             │
-│  ┌────────────────────┐        ┌────────────────────┐      │
-│  │   user-service     │        │   task-service     │      │
-│  │   (port 8080)      │◄───────│   (port 8082)      │      │
-│  │                    │  HTTP  │                    │      │
-│  │ - GET /users       │        │ - GET /tasks       │      │
-│  │ - GET /users/{id}  │        │ - GET /tasks/{id}  │      │
-│  │ - GET /users/ping  │        │ - GET /tasks/      │      │
-│  │                    │        │   user/{userId}    │      │
-│  │                    │        │ - GET /tasks/{id}/ │      │
-│  │                    │        │   with-user        │      │
-│  └────────────────────┘        └────────────────────┘      │
-│         ClusterIP                    NodePort              │
+│  ┌────────────────────┐        ┌────────────────────┐       │
+│  │   user-service     │        │   task-service     │       │
+│  │   (port 8080)      │◄───────│   (port 8082)      │       │
+│  │                    │  HTTP  │                    │       │
+│  │ - GET /users       │        │ - GET /tasks       │       │
+│  │ - GET /users/{id}  │        │ - GET /tasks/{id}  │       │
+│  │ - GET /users/ping  │        │ - GET /tasks/      │       │
+│  │                    │        │   user/{userId}    │       │
+│  │                    │        │ - GET /tasks/{id}/ │       │
+│  │                    │        │   with-user        │       │
+│  └────────────────────┘        └────────────────────┘       │
+│         ClusterIP                    NodePort               │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -135,18 +136,18 @@ docker-compose down
 ┌─────────────────────────────────────────────────────────────┐
 │                    Minikube Cluster                         │
 │                                                             │
-│  ┌──────────────────┐        ┌──────────────────┐          │
-│  │   Deployment     │        │   Deployment     │          │
-│  │   user-service   │        │   task-service   │          │
-│  │   replicas: 1    │        │   replicas: 1    │          │
-│  └────────┬─────────┘        └────────┬─────────┘          │
+│  ┌──────────────────┐        ┌──────────────────┐           │
+│  │   Deployment     │        │   Deployment     │           │
+│  │   user-service   │        │   task-service   │           │
+│  │   replicas: 1    │        │   replicas: 1    │           │
+│  └────────┬─────────┘        └────────┬─────────┘           │
 │           │                           │                     │
-│  ┌────────▼─────────┐        ┌────────▼─────────┐          │
-│  │    Service       │        │    Service       │          │
-│  │   ClusterIP      │◄───────│   NodePort       │          │
-│  │   port: 8080     │  HTTP  │   port: 8082     │          │
-│  └──────────────────┘        │   nodePort:30082 │          │
-│       (interne)              └──────────────────┘          │
+│  ┌────────▼─────────┐        ┌────────▼─────────┐           │
+│  │    Service       │        │    Service       │           │
+│  │   ClusterIP      │◄───────│   NodePort       │           │
+│  │   port: 8080     │  HTTP  │   port: 8082     │           │
+│  └──────────────────┘        │   nodePort:30082 │           │
+│       (interne)              └──────────────────┘           │
 │                                   (expose)                  │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -263,5 +264,6 @@ todo-microservices/
 ---
 
 ## Auteur
+KEVIN CHAILLOT
 
 Projet realise dans le cadre du cours de Microservices, Docker et Kubernetes.
