@@ -13,7 +13,9 @@
       "Bash(netstat:*)",
       "Bash(findstr:*)",
       "Bash(taskkill:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(docker --version:*)",
+      "Bash(docker-compose:*)"
     ]
   }
 }

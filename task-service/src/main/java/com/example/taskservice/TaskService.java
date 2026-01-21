@@ -45,7 +45,9 @@ public class TaskService {
             return null;
         }
 
-        String url = "http://localhost:8080/users/" + task.getUserId();
+        // Pour Docker: utilise le nom du service au lieu de localhost
+        String userServiceUrl = System.getenv().getOrDefault("USER_SERVICE_URL", "http://localhost:8080");
+        String url = userServiceUrl + "/users/" + task.getUserId();
         UserDto user = restTemplate.getForObject(url, UserDto.class);
 
         return new TaskWithUserDto(task, user);
