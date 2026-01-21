@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task-service
+  labels:
+    app: task-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: task-service
+  template:
+    metadata:
+      labels:
+        app: task-service
+    spec:
+      containers:
+        - name: task-service
+          image: todo-microservices-task-service:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8082
+          env:
+            - name: USER_SERVICE_URL
+              value: "http://user-service:8080"
+          readinessProbe:
+            httpGet:
+              path: /tasks/ping
+              port: 8082
+            initialDelaySeconds: 30
+            periodSeconds: 10
